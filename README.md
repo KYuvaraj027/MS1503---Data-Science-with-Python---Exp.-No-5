@@ -32,20 +32,48 @@ To perform fundamental Natural Language Processing (NLP) text preprocessing step
 
 ## Program
 
-#Text Preprocessing: Tokenization, Stopword Removal, and Lemmatization using NLTK
+import nltk  
+from nltk.corpus import stopwords  
+from nltk.tokenize import word_tokenize  
+from nltk.stem import WordNetLemmatizer  
+  
+nltk.download('punkt')  
+nltk.download('stopwords')  
+nltk.download('wordnet')  
+# Some NLTK versions also require this tokenizer resource.  
+nltk.download('punkt_tab')  
 
+text = """The product quality is excellent and the delivery service was very fast.  
+However, the packaging could have been better."""  
+print("---- Original Text ----")  
+print(text)  
 
-#Step 1: Download NLTK resources
+tokens = word_tokenize(text)  
+print("\nTokenized Words:")  
+print(tokens)  
 
-#Step 2: Sample customer feedback text
+stop_words = set(stopwords.words('english'))  
+filtered_tokens = [
+    word for word in tokens
+    if word.lower() not in stop_words and word.isalpha()
+]  
+  
+print("\nAfter Stopword Removal:")  
+print(filtered_tokens)  
 
-#Step 3: Tokenization
+lemmatizer = WordNetLemmatizer()  
+lemmatized_words = [
+    lemmatizer.lemmatize(word.lower())
+    for word in filtered_tokens
+]  
+   
+print("\nAfter Lemmatization:")  
+print(lemmatized_words)  
 
-#Step 4: Stopword Removal & Punctuation Filtering
-
-#Step 5: Lemmatization
 
 ## Output
+<img width="773" height="823" alt="image" src="https://github.com/user-attachments/assets/09c32823-9a33-4cb0-be99-d26f95a08b48" />
+
 
 
 ## Result
